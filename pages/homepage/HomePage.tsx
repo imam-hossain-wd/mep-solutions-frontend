@@ -1,4 +1,5 @@
 import { AboutUsSection } from "@/components/view/AboutUsSection/AboutUsSection";
+import { ContactUsSection } from "@/components/view/ContactUs/ContactUs";
 import { FeaturedProjects } from "@/components/view/FeaturedProjects/FeaturedProjects";
 import { Hero } from "@/components/view/Home/Hero/Hero";
 import { ServicesOverview } from "@/components/view/Home/ServiceOverview/ServiceOverview";
@@ -14,6 +15,7 @@ export default function HomePage() {
             <WhyChooseUs />
             <FeaturedProjects />
             <AboutUsSection />
+            <ContactUsSection />
             {/* Add spacing at bottom */}
             <div className="flex-1"></div>
         </div>
