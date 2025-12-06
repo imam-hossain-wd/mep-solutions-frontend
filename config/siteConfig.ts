@@ -1,5 +1,7 @@
 import { SiteConfigType } from "@/types/siteConfigType"
-import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube, Globe } from "lucide-react"
+import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube, Globe,Building,
+  Wrench, } from "lucide-react"
+
 
 export const SiteConfig: SiteConfigType = {
   authorName: "Md Walid",
@@ -25,6 +27,17 @@ export const SiteConfig: SiteConfigType = {
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ],
+  services :[
+  { name: "Building Maintenance", href: "/services/maintenance", icon: Building },
+  { name: "Electrical Services", href: "/services/electrical", icon: Wrench },
+  { name: "Plumbing & Pipe Fitting", href: "/services/plumbing", icon: Wrench },
+  { name: "Welding & Fabrication", href: "/services/welding", icon: Wrench },
+  { name: "Carpentry & Fit-Out", href: "/services/carpentry", icon: Wrench },
+  { name: "Masonry & Civil Works", href: "/services/masonry", icon: Wrench },
+  { name: "Painting & Finishing", href: "/services/painting", icon: Wrench },
+  { name: "Partition & Interior", href: "/services/partition", icon: Wrench },
+  { name: "Parking Shade & Outdoor", href: "/services/parking-shade", icon: Wrench },
+],
 
   footerhrefs: [
     { title: "About Me", href: "/about" },

@@ -15,8 +15,6 @@ import {
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import {
@@ -31,22 +29,16 @@ import {
   Mail,
   MapPin,
   Building,
-  Wrench,
+  LucideIcon,
 } from "lucide-react";
 import { SiteConfig } from "@/config/siteConfig";
 
-// Service categories for dropdown
-const services = [
-  { name: "Building Maintenance", href: "/services/maintenance", icon: Building },
-  { name: "Electrical Services", href: "/services/electrical", icon: Wrench },
-  { name: "Plumbing & Pipe Fitting", href: "/services/plumbing", icon: Wrench },
-  { name: "Welding & Fabrication", href: "/services/welding", icon: Wrench },
-  { name: "Carpentry & Fit-Out", href: "/services/carpentry", icon: Wrench },
-  { name: "Masonry & Civil Works", href: "/services/masonry", icon: Wrench },
-  { name: "Painting & Finishing", href: "/services/painting", icon: Wrench },
-  { name: "Partition & Interior", href: "/services/partition", icon: Wrench },
-  { name: "Parking Shade & Outdoor", href: "/services/parking-shade", icon: Wrench },
-];
+export type NavItem = {
+  icon: LucideIcon;
+  name: string;
+  href: string;
+};
+
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -61,13 +53,13 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = SiteConfig.navItems.map((item:any) => ({
+  const navItems = SiteConfig.navItems.map((item: any) => ({
     ...item,
-    icon: item.name === "Home" ? Home : 
-           item.name === "Services" ? Briefcase : 
-           item.name === "Projects" ? Building : 
-           item.name === "About" ? User : 
-           item.name === "Contact" ? Mail : Home,
+    icon: item.name === "Home" ? Home :
+      item.name === "Services" ? Briefcase :
+        item.name === "Projects" ? Building :
+          item.name === "About" ? User :
+            item.name === "Contact" ? Mail : Home,
   }));
 
   return (
@@ -124,7 +116,7 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-6">
-              {navItems.map((item:any) => {
+              {navItems.map((item: NavItem) => {
                 if (item.name === "Services") {
                   return (
                     <DropdownMenu key={item.name}>
@@ -146,7 +138,7 @@ export function Navbar() {
                         align="center"
                         className="w-64 p-2 grid grid-cols-2 gap-1"
                       >
-                        {services.map((service) => (
+                        {SiteConfig?.services.map((service) => (
                           <DropdownMenuItem key={service.name} asChild>
                             <Link
                               href={service.href}
@@ -260,7 +252,7 @@ export function Navbar() {
                   {/* Mobile Navigation */}
                   <div className="flex-1 overflow-y-auto p-6">
                     <div className="space-y-1">
-                      {navItems.map((item:any) => (
+                      {navItems.map((item: NavItem) => (
                         <Link
                           key={item.name}
                           href={item.href}
@@ -283,7 +275,7 @@ export function Navbar() {
                           Our Services
                         </p>
                         <div className="space-y-1">
-                          {services.map((service) => (
+                          {SiteConfig.services.map((service) => (
                             <Link
                               key={service.name}
                               href={service.href}

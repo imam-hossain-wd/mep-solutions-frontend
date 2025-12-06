@@ -22,6 +22,12 @@ export interface ContactLink {
   href: string;
 }
 
+export interface ServiceItem {
+  name: string;
+  href: string;
+  icon: LucideIcon;
+}
+
 export interface SiteConfigType {
   authorName: string;
   brandName: string;
@@ -36,6 +42,7 @@ export interface SiteConfigType {
   country: string;
 
   navItems: NavItem[];
+  services: ServiceItem[];   // ✅ THIS FIXES YOUR ERROR
   footerhrefs: FooterLink[];
   socialLinks: SocialLink[];
   contactLinks: ContactLink[];

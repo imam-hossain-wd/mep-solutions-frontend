@@ -92,7 +92,8 @@ export function Modal({
           </DialogHeader>
         )}
         
-        <div className={cn("overflow-y-auto max-h-[calc(100vh-4rem)]", contentClassName)}>
+        {/* <div className={cn("overflow-y-auto max-h-[calc(100vh-4rem)]", contentClassName)}> */}
+        <div className={cn("overflow-y-auto max-h-[calc(100vh-4rem)]")}>
           {children}
         </div>
       </DialogContent>
