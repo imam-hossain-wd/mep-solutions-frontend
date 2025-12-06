@@ -1,5 +1,6 @@
 import { Hero } from "@/components/view/Home/Hero/Hero";
 import { ServicesOverview } from "@/components/view/Home/ServiceOverview/ServiceOverview";
+import { WhyChooseUs } from "@/components/view/WhyChoose/WhyChoose";
 
 
 
@@ -8,6 +9,7 @@ export default function HomePage() {
         <main className="bg-white h-screen">
             <Hero />
             <ServicesOverview />
+            <WhyChooseUs />
         </main>
     )
 }
