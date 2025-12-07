@@ -26,6 +26,7 @@ export const SiteConfig: SiteConfigType = {
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
+    { name: "Blog", href: "/blog" },
   ],
   services :[
   { name: "Building Maintenance", href: "/services/maintenance", icon: Building },
