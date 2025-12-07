@@ -5,14 +5,21 @@ import {
     Home,
     Building,
     Factory,
-    ArrowRight
+    ArrowRight,
+    ChevronRight,
+    Phone,
+    MessageSquare,
+    Wrench,
+    Eye,
+    CheckCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
 import { SiteConfig } from "@/config/siteConfig";
 import { ServiceCard } from "@/components/shared/Card/ServiceCard";
-import { allServices } from "@/data/serviceData";
+import { allServices } from "@/constants/services";
+
 
 const categories = [
     { id: "all", label: "All Services", icon: Home },
@@ -61,32 +68,37 @@ export function ServicesOverview() {
                     ))}
                 </div>
 
-                {/* CTA Section */}
-                <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 text-center">
-                    <div className="max-w-2xl mx-auto">
-                        <h3 className="text-2xl font-bold mb-4">
-                            Need a Custom Solution?
-                        </h3>
-                        <p className="text-muted-foreground mb-6">
-                            Get a free consultation and quote for your project.
+           
+                <div className="mt-12 grid md:grid-cols-2 gap-6">
+                    {/* Custom Solution Card */}
+                    <div className="bg-primary/5 rounded-xl p-6 text-center">
+                        <h4 className="font-bold text-lg mb-3">Custom Solution Needed?</h4>
+                        <p className="text-sm text-muted-foreground mb-4">
+                            Get a free consultation for your specific requirements
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button
-                                size="lg"
-                                className="px-8 group"
-                                onClick={() => window.open(SiteConfig.whatsappLink, "_blank")}
-                            >
-                                Get Free Quote
-                                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                            </Button>
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                onClick={() => window.open(SiteConfig.callLink, "_blank")}
-                            >
-                                Call Now
-                            </Button>
-                        </div>
+                        <Button
+                            size="sm"
+                            className="w-full"
+                            onClick={() => window.open(SiteConfig.whatsappLink, "_blank")}
+                        >
+                            Get Quote
+                        </Button>
+                    </div>
+
+                    {/* View Services Card */}
+                    <div className="bg-secondary/5 rounded-xl p-6 text-center">
+                        <h4 className="font-bold text-lg mb-3">All 9 Services</h4>
+                        <p className="text-sm text-muted-foreground mb-4">
+                            Explore our complete range of building services
+                        </p>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full"
+                            onClick={() => window.location.href = '/services'}
+                        >
+                            View All Services
+                        </Button>
                     </div>
                 </div>
             </Container>
