@@ -1,5 +1,6 @@
-import ServiceSPage from "@/components/view/ServicesPage/ServicesPage";
+import ServicesPage from "@/pages/servicepage/ServicePage";
+
 
 export default function Services() {
-    return <ServiceSPage />
+    return <ServicesPage />
 }
