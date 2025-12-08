@@ -3,13 +3,13 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { 
-  ArrowRight, 
-  ChevronLeft, 
-  ChevronRight, 
-  ExternalLink, 
-  Building, 
-  Home, 
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Building,
+  Home,
   Factory,
   Filter,
   Maximize2
@@ -18,106 +18,11 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ProjectCard from "@/components/shared/Card/ProjectCard";
+import { projects } from "@/constants/ProjectData";
 
 // Project data with actual Abu Dhabi locations
-const projects = [
-  {
-    id: 1,
-    title: "Khalifa City A Villa Electrical Upgrade",
-    description: "Complete electrical rewiring and smart home installation for a luxury villa. DM-certified work with 3-year warranty.",
-    category: "electrical",
-    location: "Khalifa City A, Abu Dhabi",
-    client: "Private Villa Owner",
-    year: "2024",
-    features: ["Smart Lighting", "Safety Upgrades", "Energy Efficient"],
-    images: [
-      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1592420503146-9e5d6b0e8e5a?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w-1200"
-    ],
-    stats: { duration: "2 Weeks", budget: "AED 45,000", size: "4500 sq ft" }
-  },
-  {
-    id: 2,
-    title: "Yas Mall Food Court Plumbing System",
-    description: "Commercial plumbing installation and maintenance for food court area. Compliant with Abu Dhabi Civil Defense regulations.",
-    category: "plumbing",
-    location: "Yas Island, Abu Dhabi",
-    client: "Yas Mall Management",
-    year: "2023",
-    features: ["Commercial Grade", "Hygiene Certified", "Preventive Maintenance"],
-    images: [
-      "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200"
-    ],
-    stats: { duration: "3 Weeks", budget: "AED 120,000", size: "Food Court" }
-  },
-  {
-    id: 3,
-    title: "Al Reem Island Office Fit-Out",
-    description: "Complete office interior fit-out including partitions, electrical, and HVAC. Delivered 2 weeks ahead of schedule.",
-    category: "partition",
-    location: "Al Reem Island, Abu Dhabi",
-    client: "Tech Company HQ",
-    year: "2024",
-    features: ["Modern Design", "Acoustic Partitions", "LED Lighting"],
-    images: [
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200"
-    ],
-    stats: { duration: "6 Weeks", budget: "AED 280,000", size: "8000 sq ft" }
-  },
-  {
-    id: 4,
-    title: "Mohammed Bin Zayed City Parking Shades",
-    description: "Custom-designed parking shade structures for residential compound. UV-protected material with 10-year warranty.",
-    category: "outdoor",
-    location: "MBZ City, Abu Dhabi",
-    client: "Residential Compound",
-    year: "2023",
-    features: ["UV Protection", "Storm Resistant", "Custom Design"],
-    images: [
-      "https://images.unsplash.com/photo-1600585154340-963ed7476daf?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200"
-    ],
-    stats: { duration: "1 Week", budget: "AED 65,000", size: "20 Car Spaces" }
-  },
-  {
-    id: 5,
-    title: "Saadiyat Island Hotel Maintenance Contract",
-    description: "Annual maintenance contract for 5-star hotel including electrical, plumbing, and civil works.",
-    category: "maintenance",
-    location: "Saadiyat Island, Abu Dhabi",
-    client: "Luxury Hotel Chain",
-    year: "2023-Present",
-    features: ["24/7 Support", "Preventive Maintenance", "Emergency Response"],
-    images: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=1200"
-    ],
-    stats: { duration: "Ongoing", budget: "Annual Contract", size: "Hotel Complex" }
-  },
-  {
-    id: 6,
-    title: "Al Raha Beach Welding & Fabrication",
-    description: "Custom stainless steel railings and gates for waterfront villas. Salt-resistant materials for coastal environment.",
-    category: "welding",
-    location: "Al Raha Beach, Abu Dhabi",
-    client: "Waterfront Villas",
-    year: "2024",
-    features: ["Stainless Steel", "Salt Resistant", "Custom Design"],
-    images: [
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1581094794796-8f5be4b88c2c?auto=format&fit=crop&w=1200",
-      "https://images.unsplash.com/photo-1581094794793-8e5a5f5c5f5c?auto=format&fit=crop&w=1200"
-    ],
-    stats: { duration: "3 Weeks", budget: "AED 85,000", size: "8 Villas" }
-  }
-];
+
 
 const categories = [
   { id: "all", label: "All Projects", count: projects.length },
@@ -134,8 +39,8 @@ export function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const filteredProjects = activeCategory === "all" 
-    ? projects 
+  const filteredProjects = activeCategory === "all"
+    ? projects
     : projects.filter(project => project.category === activeCategory);
 
   const categoryLabels: Record<string, string> = {
@@ -152,7 +57,7 @@ export function FeaturedProjects() {
       {/* Background Elements */}
       <div className="absolute top-20 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-20 -left-20 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-      
+
       <Container>
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
@@ -160,14 +65,14 @@ export function FeaturedProjects() {
             <Filter className="h-4 w-4 mr-2" />
             OUR PORTFOLIO
           </Badge>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Featured Projects in{" "}
             <span className="text-primary">Abu Dhabi</span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Showcasing our high-quality building services and construction projects 
+            Showcasing our high-quality building services and construction projects
             completed for residential, commercial, and hospitality clients across the UAE.
           </p>
         </div>
@@ -197,85 +102,18 @@ export function FeaturedProjects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {filteredProjects.map((project) => (
-            <div
+            <ProjectCard
               key={project.id}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-              onClick={() => setSelectedProject(project)}
-            >
-              {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={project.images[0]}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                
-                {/* Category Badge */}
-                <Badge className="absolute top-4 left-4">
-                  {categoryLabels[project.category]}
-                </Badge>
-                
-                {/* View More */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Button size="sm" variant="secondary" className="rounded-full">
-                    <Maximize2 className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-
-              {/* Project Content */}
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <span className="text-sm text-gray-500">{project.year}</span>
-                </div>
-                
-                <p className="text-gray-600 mb-4 line-clamp-2">
-                  {project.description}
-                </p>
-                
-                {/* Location */}
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-">
-                  <Building className="h-4 w-4" />
-                  <span>{project.location}</span>
-                </div>
-                
-                {/* Features */}
-                {/* <div className="flex flex-wrap gap-2 mb-4">
-                  {project.features.map((feature, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                </div> */}
-                
-                {/* Stats */}
-                {/* <div className="grid grid-cols-3 gap-2 pt-4 border-t">
-                  <div className="text-center">
-                    <div className="text-sm font-semibold text-primary">{project.stats.duration}</div>
-                    <div className="text-xs text-gray-500">Duration</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-sm font-semibold text-primary">{project.stats.budget}</div>
-                    <div className="text-xs text-gray-500">Budget</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-sm font-semibold text-primary">{project.stats.size}</div>
-                    <div className="text-xs text-gray-500">Size</div>
-                  </div>
-                </div> */}
-              </div>
-            </div>
+              project={project}
+              categoryLabels={categoryLabels}
+              onSelect={(project:any) => {
+                setSelectedProject(project)
+                setCurrentImageIndex(0)
+              }}
+            />
           ))}
         </div>
+
 
         {/* CTA */}
         <div className="text-center">
@@ -316,10 +154,10 @@ export function FeaturedProjects() {
                 className="object-cover"
                 sizes="100vw"
               />
-              
+
               {/* Navigation */}
               <button
-                onClick={() => setCurrentImageIndex(prev => 
+                onClick={() => setCurrentImageIndex(prev =>
                   prev === 0 ? selectedProject.images.length - 1 : prev - 1
                 )}
                 className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded-full"
@@ -327,7 +165,7 @@ export function FeaturedProjects() {
                 <ChevronLeft className="h-6 w-6" />
               </button>
               <button
-                onClick={() => setCurrentImageIndex(prev => 
+                onClick={() => setCurrentImageIndex(prev =>
                   (prev + 1) % selectedProject.images.length
                 )}
                 className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded-full"
