@@ -33,6 +33,7 @@ export interface SiteConfigType {
   brandName: string;
   url: string;
   email: string;
+  googleMapsLink: string;
   description: string;
   displayNumber: string;
   callLink: string;

@@ -8,6 +8,7 @@ export const SiteConfig: SiteConfigType = {
   brandName: "Walid Portfolio / Service Platform",
   url: "https://yourwebsite.com", 
   email: "yourmail@example.com",
+  googleMapsLink: "",
 
   description:
     "This project is a modern, scalable web platform developed by Md Walid, focused on delivering responsive UI, smooth user experience, and high-performance front-end architecture using Next.js and Tailwind CSS.",
