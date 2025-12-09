@@ -47,10 +47,10 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window?.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window?.addEventListener("scroll", handleScroll);
+    return () => window?.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = SiteConfig.navItems.map((item: any) => ({
@@ -178,7 +178,7 @@ export function Navbar() {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => window.open(SiteConfig.whatsappLink, "_blank")}
+                onClick={() => window?.open(SiteConfig.whatsappLink, "_blank")}
                 className="gap-2"
               >
                 <MessageSquare className="h-4 w-4" />
@@ -186,7 +186,7 @@ export function Navbar() {
               </Button>
               <Button
                 size="sm"
-                onClick={() => window.open(SiteConfig.callLink, "_blank")}
+                onClick={() => window?.open(SiteConfig.callLink, "_blank")}
                 className="gap-2"
               >
                 <Phone className="h-4 w-4" />
@@ -298,7 +298,7 @@ export function Navbar() {
                         variant="outline"
                         size="sm"
                         onClick={() => {
-                          window.open(SiteConfig.whatsappLink, "_blank");
+                          window?.open(SiteConfig.whatsappLink, "_blank");
                           setIsMobileMenuOpen(false);
                         }}
                         className="w-full"
@@ -309,7 +309,7 @@ export function Navbar() {
                       <Button
                         size="sm"
                         onClick={() => {
-                          window.open(SiteConfig.callLink, "_blank");
+                          window?.open(SiteConfig.callLink, "_blank");
                           setIsMobileMenuOpen(false);
                         }}
                         className="w-full"
@@ -335,7 +335,7 @@ export function FloatingWhatsAppButton() {
     <Button
       size="icon"
       className="fixed bottom-6 right-6 z-40 h-14 w-14 rounded-full shadow-xl bg-green-500 hover:bg-green-600"
-      onClick={() => window.open(SiteConfig.whatsappLink, "_blank")}
+      onClick={() => window?.open(SiteConfig.whatsappLink, "_blank")}
     >
       <MessageSquare className="h-6 w-6" />
       <span className="sr-only">WhatsApp</span>

@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SiteConfig } from "@/config/siteConfig";
 import { faqItems } from "@/constants/faq";
+import Link from "next/link";
 
 
 export function FAQSection() {
@@ -248,24 +249,28 @@ export function FAQSection() {
                                 any questions about your project requirements, pricing, or timelines.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Button
-                                    size="lg"
-                                    variant="secondary"
-                                    className="bg-white text-primary hover:bg-white/90"
-                                    onClick={() => window.open(SiteConfig.whatsappLink, "_blank")}
-                                >
-                                    <MessageSquare className="h-5 w-5 mr-2" />
-                                    Chat on WhatsApp
-                                </Button>
-                                <Button
-                                    size="lg"
-                                    variant="outline"
-                                    className="border-white text-white hover:bg-white/10"
-                                    onClick={() => window.open(SiteConfig.callLink, "_blank")}
-                                >
-                                    <Phone className="h-5 w-5 mr-2" />
-                                    Call Now
-                                </Button>
+                                <Link href={SiteConfig.whatsappLink}>
+
+                                    <Button
+                                        size="lg"
+                                        variant="secondary"
+                                        className="bg-white text-primary hover:bg-white/90"
+                                    >
+                                        <MessageSquare className="h-5 w-5 mr-2" />
+                                        Chat on WhatsApp
+                                    </Button>
+                                </Link>
+
+                                <Link href={SiteConfig.callLink}>
+                                    <Button
+                                        size="lg"
+                                        variant="outline"
+                                        className="border-white text-white hover:bg-white/10"
+                                    >
+                                        <Phone className="h-5 w-5 mr-2" />
+                                        Call Now
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>

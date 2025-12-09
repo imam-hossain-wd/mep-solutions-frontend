@@ -3,14 +3,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { 
-  Target, 
-  Eye, 
-  Heart, 
-  Users, 
-  Award, 
-  CheckCircle, 
-  MapPin, 
+import {
+  Target,
+  Eye,
+  Heart,
+  Users,
+  Award,
+  CheckCircle,
+  MapPin,
   Clock,
   Building,
   Shield,
@@ -21,6 +21,7 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SiteConfig } from "@/config/siteConfig";
+import Link from "next/link";
 
 export function AboutUsSection() {
   const [activeTab, setActiveTab] = useState("mission");
@@ -74,7 +75,7 @@ export function AboutUsSection() {
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary" />
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-      
+
       <Container>
         {/* Header Section */}
         <div className="text-center max-w-4xl mx-auto mb-16">
@@ -82,15 +83,15 @@ export function AboutUsSection() {
             <Building className="h-4 w-4 mr-2" />
             ABOUT OUR COMPANY
           </Badge>
-          
+
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Building Excellence in{" "}
             <span className="text-primary">Abu Dhabi</span> Since 2009
           </h1>
-          
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We are the trusted partner for comprehensive building maintenance, repairs, 
-            and construction services across the UAE. Combining local expertise with 
+            We are the trusted partner for comprehensive building maintenance, repairs,
+            and construction services across the UAE. Combining local expertise with
             international standards to deliver exceptional results.
           </p>
         </div>
@@ -98,7 +99,7 @@ export function AboutUsSection() {
         {/* Stats Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {companyStats.map((stat, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white p-6 rounded-2xl shadow-lg border text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
@@ -131,7 +132,7 @@ export function AboutUsSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
             </div>
-            
+
             {/* Experience Badge */}
             <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-2xl">
               <div className="text-center">
@@ -157,19 +158,19 @@ export function AboutUsSection() {
                 Your Trusted Building Services Partner in{" "}
                 <span className="text-primary">Abu Dhabi</span>
               </h2>
-              
+
               <p className="text-gray-700 mb-4 text-lg">
-                Founded in 2009, {SiteConfig.brandName} has grown to become one of 
-                Abu Dhabi's most reliable building service providers. What started 
-                as a small electrical service company has evolved into a comprehensive 
-                building solutions provider serving residential, commercial, and 
+                Founded in 2009, {SiteConfig.brandName} has grown to become one of
+                Abu Dhabi's most reliable building service providers. What started
+                as a small electrical service company has evolved into a comprehensive
+                building solutions provider serving residential, commercial, and
                 industrial clients across the UAE.
               </p>
-              
+
               <p className="text-gray-700 mb-6 text-lg">
-                Our deep understanding of Abu Dhabi's building regulations, climate 
-                challenges, and architectural requirements allows us to deliver 
-                services that are not only compliant but optimized for the local 
+                Our deep understanding of Abu Dhabi's building regulations, climate
+                challenges, and architectural requirements allows us to deliver
+                services that are not only compliant but optimized for the local
                 environment.
               </p>
             </div>
@@ -185,11 +186,10 @@ export function AboutUsSection() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${
-                      activeTab === tab.id
+                    className={`flex items-center gap-2 px-6 py-3 font-medium transition-all ${activeTab === tab.id
                         ? "text-primary border-b-2 border-primary"
                         : "text-gray-600 hover:text-gray-900"
-                    }`}
+                      }`}
                   >
                     <tab.icon className="h-5 w-5" />
                     {tab.label}
@@ -202,38 +202,38 @@ export function AboutUsSection() {
                   <div>
                     <h3 className="text-2xl font-bold mb-4 text-primary">Our Mission</h3>
                     <p className="text-gray-700">
-                      To provide exceptional building maintenance and construction services 
-                      that enhance the safety, functionality, and value of properties across 
-                      Abu Dhabi. We are committed to delivering reliable, high-quality solutions 
+                      To provide exceptional building maintenance and construction services
+                      that enhance the safety, functionality, and value of properties across
+                      Abu Dhabi. We are committed to delivering reliable, high-quality solutions
                       with transparent pricing and outstanding customer service.
                     </p>
                   </div>
                 )}
-                
+
                 {activeTab === "vision" && (
                   <div>
                     <h3 className="text-2xl font-bold mb-4 text-primary">Our Vision</h3>
                     <p className="text-gray-700">
-                      To be the most trusted building services provider in the UAE, recognized 
-                      for our technical expertise, commitment to quality, and dedication to 
-                      client satisfaction. We aim to set industry standards through innovation, 
+                      To be the most trusted building services provider in the UAE, recognized
+                      for our technical expertise, commitment to quality, and dedication to
+                      client satisfaction. We aim to set industry standards through innovation,
                       sustainability, and continuous improvement.
                     </p>
                   </div>
                 )}
-                
+
                 {activeTab === "values" && (
                   <div>
                     <h3 className="text-2xl font-bold mb-4 text-primary">Our Core Values</h3>
                     <ul className="space-y-3">
-                      {["Integrity in all dealings", "Quality without compromise", 
-                        "Reliability you can count on", "Innovation in solutions", 
+                      {["Integrity in all dealings", "Quality without compromise",
+                        "Reliability you can count on", "Innovation in solutions",
                         "Safety as priority #1"].map((value, index) => (
-                        <li key={index} className="flex items-center gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                          <span className="text-gray-700">{value}</span>
-                        </li>
-                      ))}
+                          <li key={index} className="flex items-center gap-3">
+                            <CheckCircle className="h-5 w-5 text-green-500" />
+                            <span className="text-gray-700">{value}</span>
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 )}
@@ -269,11 +269,11 @@ export function AboutUsSection() {
                 `}>
                   <value.icon className="h-7 w-7" />
                 </div>
-                
+
                 <h3 className="text-xl font-bold mb-3 text-gray-900">
                   {value.title}
                 </h3>
-                
+
                 <p className="text-gray-600">
                   {value.description}
                 </p>
@@ -289,36 +289,36 @@ export function AboutUsSection() {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Our <span className="text-primary">Expert Team</span>
               </h2>
-              
+
               <div className="space-y-4 mb-6">
                 <div className="flex items-start gap-3">
                   <Users className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-lg">50+ Certified Technicians</h4>
                     <p className="text-gray-600">
-                      DM-certified electricians, plumbers, welders, carpenters, and 
+                      DM-certified electricians, plumbers, welders, carpenters, and
                       civil engineers with extensive UAE experience.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <Award className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-lg">Continuous Training</h4>
                     <p className="text-gray-600">
-                      Regular safety training, technical workshops, and certification 
+                      Regular safety training, technical workshops, and certification
                       updates to maintain industry-leading standards.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <Shield className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-lg">Safety First</h4>
                     <p className="text-gray-600">
-                      Comprehensive safety protocols, PPE compliance, and regular 
+                      Comprehensive safety protocols, PPE compliance, and regular
                       site inspections to ensure accident-free operations.
                     </p>
                   </div>
@@ -365,14 +365,13 @@ export function AboutUsSection() {
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary hidden md:block" />
-            
+
             <div className="space-y-8 md:space-y-12">
               {milestones.map((milestone, index) => (
                 <div
                   key={milestone.year}
-                  className={`flex flex-col md:flex-row items-center ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
+                  className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                    }`}
                 >
                   <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 text-right' : 'md:pl-12'}`}>
                     <div className="bg-white p-6 rounded-2xl shadow border inline-block max-w-md">
@@ -383,11 +382,11 @@ export function AboutUsSection() {
                       <p className="text-gray-600">{milestone.description}</p>
                     </div>
                   </div>
-                  
+
                   <div className="hidden md:block relative">
                     <div className="w-4 h-4 bg-primary rounded-full border-4 border-white" />
                   </div>
-                  
+
                   <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 text-right'}`}>
                     {/* Empty for spacing */}
                   </div>
@@ -405,26 +404,35 @@ export function AboutUsSection() {
               Ready to Work with Abu Dhabi's Trusted Building Partner?
             </h2>
             <p className="text-white/90 mb-8 text-lg">
-              Join hundreds of satisfied clients who trust us with their building 
+              Join hundreds of satisfied clients who trust us with their building
               maintenance and construction needs across the UAE.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="bg-white text-primary hover:bg-white/90"
-                onClick={() => window.open(SiteConfig.whatsappLink, "_blank")}
-              >
-                Get Free Consultation
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10"
-                onClick={() => window.open(SiteConfig.callLink, "_blank")}
-              >
-                Call {SiteConfig.displayNumber}
-              </Button>
+
+
+              {/* <Link href="SiteConfig.whatsappLink">
+              
+              </Link> */}
+              <Link href="SiteConfig.whatsappLink">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="bg-white text-primary hover:bg-white/90"
+                >
+                  Get Free Consultation
+                </Button>
+              </Link>
+
+              <Link href="SiteConfig.callLink">
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white/10"
+                >
+                  Call {SiteConfig.displayNumber}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

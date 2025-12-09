@@ -2,9 +2,10 @@
 
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageSquare, Calendar, Shield, Clock, MapPin, CheckCircle, Award } from "lucide-react";
+import { Phone, MessageSquare, Shield, Clock, MapPin, CheckCircle, Award } from "lucide-react";
 import Image from "next/image";
 import { SiteConfig } from "@/config/siteConfig";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -24,7 +25,7 @@ export function Hero() {
             <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-primary/10 border border-primary/20">
               <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
               <span className="text-xs md:text-sm font-medium text-primary">
-                Trusted in {SiteConfig.city}, {SiteConfig.country}
+                Trusted in {SiteConfig?.city}, {SiteConfig?.country}
               </span>
             </div>
 
@@ -58,8 +59,8 @@ export function Hero() {
                     <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-sm md:text-base truncate">{feature.text}</p>
-                    <p className="text-xs md:text-sm text-muted-foreground truncate">{feature.sub}</p>
+                    <p className="font-semibold text-sm md:text-base truncate">{feature?.text}</p>
+                    <p className="text-xs md:text-sm text-muted-foreground truncate">{feature?.sub}</p>
                   </div>
                 </div>
               ))}
@@ -67,24 +68,27 @@ export function Hero() {
 
             {/* CTA Buttons - Stack on mobile */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
-              <Button
-                size="lg"
-                className="flex-1 group h-12 md:h-14"
-                onClick={() => window.open(SiteConfig.whatsappLink, '_blank')}
-              >
-                <MessageSquare className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
-                <span className="text-sm md:text-base">WhatsApp Now</span>
-              </Button>
 
-              <Button
-                size="lg"
-                variant="secondary"
-                className="flex-1 group h-12 md:h-14"
-                onClick={() => window.open(SiteConfig.callLink, '_blank')}
-              >
-                <Phone className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
-                <span className="text-sm md:text-base">Call {SiteConfig.displayNumber.split(' ')[0]}</span>
-              </Button>
+              <Link href={SiteConfig?.whatsappLink}>
+                <Button
+                  size="lg"
+                  className="flex-1 group h-12 md:h-14"
+                >
+                  <MessageSquare className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm md:text-base">WhatsApp Now</span>
+                </Button>
+              </Link>
+
+              <Link href={SiteConfig?.callLink}>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="flex-1 group h-12 md:h-14"
+                >
+                  <Phone className="mr-2 h-4 w-4 md:h-5 md:w-5 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm md:text-base">Call {SiteConfig?.displayNumber?.split(' ')[0]}</span>
+                </Button>
+              </Link>
             </div>
 
             {/* Quick Stats - Responsive */}
@@ -95,8 +99,8 @@ export function Hero() {
                 { number: "24/7", label: "Service" },
               ].map((stat, index) => (
                 <div key={index} className="text-center p-3 md:p-4 rounded-lg bg-background/50">
-                  <p className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">{stat.number}</p>
-                  <p className="text-xs md:text-sm text-muted-foreground mt-1">{stat.label}</p>
+                  <p className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">{stat?.number}</p>
+                  <p className="text-xs md:text-sm text-muted-foreground mt-1">{stat?.label}</p>
                 </div>
               ))}
             </div>
@@ -127,7 +131,7 @@ export function Hero() {
                   <div className="bg-background/90 backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-lg">
                     <p className="text-sm md:text-base text-muted-foreground">Need Immediate Help?</p>
                     <div className="flex items-center justify-between mt-2">
-                      <p className="text-lg md:text-xl font-bold text-primary">{SiteConfig.displayNumber}</p>
+                      <p className="text-lg md:text-xl font-bold text-primary">{SiteConfig?.displayNumber}</p>
                       <Button size="sm" className="shadow-md">
                         <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                         <span className="text-xs md:text-sm">Call Now</span>

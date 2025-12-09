@@ -25,25 +25,23 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { BlogCard } from "@/components/shared/Card/BlogCard";
+import { blogs } from "@/constants/blogData";
 
-interface BlogPageProps {
-  blogs: Blog[];
-  categories: string[];
-}
 
-export function BlogPage({ blogs, categories }: BlogPageProps) {
+
+export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<"newest" | "popular" | "oldest">("newest");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
+  const categories = Array.from(new Set(blogs?.map(blog => blog.category)));
   // Extract all unique tags
-  const allTags = Array.from(new Set(blogs.flatMap(blog => blog.tags)));
+  const allTags = Array.from(new Set(blogs?.flatMap(blog => blog?.tags)));
 
   // Filter blogs
-  const filteredBlogs = blogs
-    .filter(blog => {
+  const filteredBlogs = blogs?.filter(blog => {
       // Search filter
       const matchesSearch = searchTerm === "" || 
         blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -84,7 +82,7 @@ export function BlogPage({ blogs, categories }: BlogPageProps) {
   const toggleTag = (tag: string) => {
     setSelectedTags(prev =>
       prev.includes(tag)
-        ? prev.filter(t => t !== tag)
+        ? prev?.filter(t => t !== tag)
         : [...prev, tag]
     );
   };
@@ -193,7 +191,7 @@ export function BlogPage({ blogs, categories }: BlogPageProps) {
                       <div className="flex items-center justify-between">
                         <span>{category}</span>
                         <span className="text-sm opacity-75">
-                          {blogs.filter(b => b.category === category).length}
+                          {blogs?.filter(b => b.category === category).length}
                         </span>
                       </div>
                     </button>
@@ -286,8 +284,8 @@ export function BlogPage({ blogs, categories }: BlogPageProps) {
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-600">Showing</span>
-                    <span className="font-bold text-primary">{filteredBlogs.length}</span>
-                    <span className="text-sm text-gray-600">of {blogs.length} articles</span>
+                    <span className="font-bold text-primary">{filteredBlogs?.length}</span>
+                    <span className="text-sm text-gray-600">of {blogs?.length} articles</span>
                   </div>
                   
                   {selectedTags.length > 0 && (
@@ -350,7 +348,7 @@ export function BlogPage({ blogs, categories }: BlogPageProps) {
               </div>
 
               {/* Featured Blog */}
-              {filteredBlogs.length > 0 && searchTerm === "" && selectedCategory === "all" && selectedTags.length === 0 && (
+              {filteredBlogs?.length > 0 && searchTerm === "" && selectedCategory === "all" && selectedTags.length === 0 && (
                 <div className="mb-12">
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-2xl font-bold flex items-center gap-2">
@@ -366,33 +364,33 @@ export function BlogPage({ blogs, categories }: BlogPageProps) {
               )}
 
               {/* Blog Grid/List */}
-              {filteredBlogs.length > 0 ? (
+              {filteredBlogs?.length > 0 ? (
                 <>
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-2xl font-bold">
                       {searchTerm ? 'Search Results' : 'Latest Articles'}
                     </h2>
                     <div className="text-sm text-gray-600">
-                      Page 1 of {Math.ceil(filteredBlogs.length / 6)}
+                      Page 1 of {Math.ceil(filteredBlogs?.length / 6)}
                     </div>
                   </div>
                   
                   {viewMode === "grid" ? (
                     <div className="grid md:grid-cols-2 gap-6">
-                      {filteredBlogs.map((blog) => (
+                      {filteredBlogs?.map((blog) => (
                         <BlogCard key={blog.slug} blog={blog} />
                       ))}
                     </div>
                   ) : (
                     <div className="space-y-4">
-                      {filteredBlogs.map((blog) => (
+                      {filteredBlogs?.map((blog) => (
                         <BlogCard key={blog.slug} blog={blog} variant="compact" />
                       ))}
                     </div>
                   )}
                   
                   {/* Pagination */}
-                  {filteredBlogs.length > 6 && (
+                  {filteredBlogs?.length > 6 && (
                     <div className="flex justify-center mt-12">
                       <div className="flex items-center gap-2">
                         <Button variant="outline" size="sm" disabled>
@@ -428,26 +426,26 @@ export function BlogPage({ blogs, categories }: BlogPageProps) {
               )}
 
               {/* Recent Posts Sidebar (for list view) */}
-              {viewMode === "list" && filteredBlogs.length > 0 && (
+              {viewMode === "list" && filteredBlogs?.length > 0 && (
                 <div className="mt-12 pt-8 border-t">
                   <h3 className="font-bold text-lg mb-6 flex items-center gap-2">
                     <Calendar className="h-5 w-5 text-primary" />
                     Recent Posts
                   </h3>
                   <div className="grid md:grid-cols-3 gap-6">
-                    {recentBlogs.map((blog) => (
-                      <div key={blog.slug} className="bg-white rounded-xl border border-gray-200 p-4">
+                    {recentBlogs?.map((blog) => (
+                      <div key={blog?.slug} className="bg-white rounded-xl border border-gray-200 p-4">
                         <div className="flex items-center gap-2 mb-2">
                           <span className="px-2 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
-                            {blog.category}
+                            {blog?.category}
                           </span>
                         </div>
                         <h4 className="font-bold text-gray-900 mb-2 line-clamp-2">
-                          {blog.title}
+                          {blog?.title}
                         </h4>
                         <div className="flex items-center gap-2 text-xs text-gray-500">
                           <Clock className="h-3 w-3" />
-                          {blog.readTime}
+                          {blog?.readTime}
                         </div>
                       </div>
                     ))}

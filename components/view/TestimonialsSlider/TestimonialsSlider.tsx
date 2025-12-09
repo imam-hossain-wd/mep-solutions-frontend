@@ -72,7 +72,8 @@ export function TestimonialsSlider() {
 
     // Calculate visible testimonials based on screen size
     const getVisibleTestimonials = () => {
-        const width = window.innerWidth;
+        const x= 1200
+        const width = x; 
         let perView = testimonialsPerView.desktop;
 
         if (width < 768) perView = testimonialsPerView.mobile;

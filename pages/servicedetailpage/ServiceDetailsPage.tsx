@@ -1,19 +1,4 @@
 
-// "use client";
-// import { services } from "@/constants/servicedata";
-
-// export default function ServiceDetailsPage({serviceData}:any) {
-//     const relatedserviceData = services.filter((s) => serviceData.related.includes(s.slug));
-//     console.log(serviceData,"serviceData" )
-//     console.log(relatedserviceData,"relatedserviceData" )
-//   return (
-//    <div>
-//     Service detail page components---
-//    </div>
-//   );
-// }
-
-// app/pages/servicedetailpage/ServiceDetailsPage.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -78,11 +63,11 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
   
   // Get related services
   const relatedServices = services.filter((s) => 
-    serviceData.related.includes(s.slug)
+    serviceData?.related?.includes(s.slug)
   );
 
   // Get icon component
-  const ServiceIcon = getIcon(serviceData.icon);
+  const ServiceIcon = getIcon(serviceData?.icon);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,28 +88,28 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
   const stats = [
     { 
       label: "Response Time", 
-      value: serviceData.responseTime, 
+      value: serviceData?.responseTime, 
       icon: Clock, 
       color: "text-blue-600", 
       bg: "bg-blue-50" 
     },
     { 
       label: "Warranty", 
-      value: serviceData.warranty, 
+      value: serviceData?.warranty, 
       icon: Shield, 
       color: "text-green-600", 
       bg: "bg-green-50" 
     },
     { 
       label: "Price Range", 
-      value: serviceData.priceRange, 
+      value: serviceData?.priceRange, 
       icon: DollarSign, 
       color: "text-amber-600", 
       bg: "bg-amber-50" 
     },
     { 
       label: "Certification", 
-      value: serviceData.certification, 
+      value: serviceData?.certification, 
       icon: Award, 
       color: "text-purple-600", 
       bg: "bg-purple-50" 
@@ -154,7 +139,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
     {
       icon: Truck,
       title: "Quick Response",
-      description: serviceData.responseTime + " response",
+      description: serviceData?.responseTime + " response",
       color: "bg-purple-100 text-purple-600",
     },
   ];
@@ -172,7 +157,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
   // Handle booking
   const handleBooking = () => {
     // Implement booking logic here
-    console.log("Booking initiated for:", serviceData.title);
+    console.log("Booking initiated for:", serviceData?.title);
   };
 
   return (
@@ -196,7 +181,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
       </div>
 
       {/* Hero Section */}
-      <section className={`relative pt-20 pb-28 px-4 md:px-6 text-white bg-gradient-to-br ${serviceData.heroColor} overflow-hidden`}>
+      <section className={`relative pt-20 pb-28 px-4 md:px-6 text-white bg-gradient-to-br ${serviceData?.heroColor} overflow-hidden`}>
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -top-32 -left-32 w-96 h-96 bg-white rounded-full"></div>
@@ -222,16 +207,16 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                   <ServiceIcon className="h-12 w-12" />
                 </div>
                 <Badge className="bg-white/20 backdrop-blur-sm text-white border-0 text-base px-4 py-2 rounded-full animate-pulse">
-                  {serviceData.badge}
+                  {serviceData?.badge}
                 </Badge>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                {serviceData.title}
+                {serviceData?.title}
               </h1>
 
               <p className="text-xl text-white/90 max-w-2xl leading-relaxed">
-                {serviceData.description}
+                {serviceData?.description}
               </p>
 
               {/* Quick Stats */}
@@ -244,10 +229,10 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                       className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-colors duration-300"
                     >
                       <div className="flex items-center gap-2 mb-2">
-                        <Icon className={`h-4 w-4 ${stat.color}`} />
-                        <span className="text-sm font-medium text-white/90">{stat.label}</span>
+                        <Icon className={`h-4 w-4 ${stat?.color}`} />
+                        <span className="text-sm font-medium text-white/90">{stat?.label}</span>
                       </div>
-                      <p className="text-xl font-bold text-white">{stat.value}</p>
+                      <p className="text-xl font-bold text-white">{stat?.value}</p>
                     </div>
                   );
                 })}
@@ -279,8 +264,8 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
             <div className="relative hidden lg:block">
               <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
                 <Image
-                  src={serviceData.projects[selectedProjectIndex]?.image}
-                  alt={serviceData.title}
+                  src={serviceData?.projects[selectedProjectIndex]?.image}
+                  alt={serviceData?.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                   priority
@@ -288,21 +273,21 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 text-white">
                   <p className="text-sm font-medium">Featured Project</p>
-                  <h3 className="text-xl font-bold">{serviceData.projects[selectedProjectIndex]?.title}</h3>
-                  <p className="text-white/80">{serviceData.projects[selectedProjectIndex]?.location}</p>
+                  <h3 className="text-xl font-bold">{serviceData?.projects[selectedProjectIndex]?.title}</h3>
+                  <p className="text-white/80">{serviceData?.projects[selectedProjectIndex]?.location}</p>
                 </div>
                 
                 {/* Project thumbnails */}
                 <div className="absolute bottom-6 right-6 flex gap-2">
-                  {serviceData.projects.map((project: any, index: number) => (
+                  {serviceData?.projects?.map((project: any, index: number) => (
                     <button
                       key={index}
                       onClick={() => setSelectedProjectIndex(index)}
                       className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 ${selectedProjectIndex === index ? 'border-white' : 'border-transparent'}`}
                     >
                       <Image
-                        src={project.image}
-                        alt={project.title}
+                        src={project?.image}
+                        alt={project?.title}
                         fill
                         className="object-cover"
                       />
@@ -358,18 +343,18 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                 </div>
                 
                 <div className="space-y-6">
-                  {serviceData.serviceTypes.map((type: any, index: number) => {
+                  {serviceData?.serviceTypes?.map((type: any, index: number) => {
                     const Icon = serviceTypeIcons[type.type as keyof typeof serviceTypeIcons];
                     return (
                       <div key={index} className="space-y-3">
                         <div className="flex justify-between items-center">
                           <div className="flex items-center gap-3">
                             <Icon className="h-5 w-5 text-gray-600" />
-                            <span className="font-semibold text-lg">{type.type}</span>
+                            <span className="font-semibold text-lg">{type?.type}</span>
                           </div>
-                          <span className="font-bold text-xl text-primary">{type.percentage}%</span>
+                          <span className="font-bold text-xl text-primary">{type?.percentage}%</span>
                         </div>
-                        <Progress value={type.percentage} className="h-3 rounded-full" />
+                        <Progress value={type?.percentage} className="h-3 rounded-full" />
                       </div>
                     );
                   })}
@@ -385,8 +370,8 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
-                {serviceData.benefits.map((benefit: any, index: number) => {
-                  const BenefitIcon = getIcon(benefit.icon);
+                {serviceData?.benefits?.map((benefit: any, index: number) => {
+                  const BenefitIcon = getIcon(benefit?.icon);
                   return (
                     <Card 
                       key={index} 
@@ -398,8 +383,8 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                             <BenefitIcon className="h-6 w-6 text-primary" />
                           </div>
                           <div>
-                            <h3 className="font-bold text-lg mb-2">{benefit.text}</h3>
-                            <p className="text-gray-600">{benefit.desc}</p>
+                            <h3 className="font-bold text-lg mb-2">{benefit?.text}</h3>
+                            <p className="text-gray-600">{benefit?.desc}</p>
                           </div>
                         </div>
                       </CardContent>
@@ -425,7 +410,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-6">
-                  {serviceData.features.map((feature: string, index: number) => (
+                  {serviceData?.features?.map((feature: string, index: number) => (
                     <div 
                       key={index} 
                       className="flex items-start gap-3 p-4 bg-gray-50 hover:bg-white rounded-xl transition-all duration-300 group"
@@ -459,15 +444,15 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                   <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 via-primary to-secondary/20 hidden md:block"></div>
                   
                   <div className="space-y-12">
-                    {serviceData.process.map((step: any, index: number) => (
+                    {serviceData?.process?.map((step: any, index: number) => (
                       <div key={index} className="relative flex items-start gap-8">
                         <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center shadow-lg">
                           <span className="text-white font-bold text-2xl">{step.step}</span>
                         </div>
                         
                         <div className="flex-1 pt-2">
-                          <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                          <p className="text-gray-600 text-lg">{step.desc}</p>
+                          <h3 className="text-2xl font-bold mb-3">{step?.title}</h3>
+                          <p className="text-gray-600 text-lg">{step?.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -485,16 +470,16 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
             </div>
             
             <div className="grid md:grid-cols-3 gap-6">
-              {serviceData.projects.map((project: any, index: number) => (
+              {serviceData?.projects?.map((project: any, index: number) => (
                 <Card 
                   key={index} 
                   className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden group cursor-pointer"
-                  onClick={() => window.open(project.image, '_blank')}
+                  onClick={() => window.open(project?.image, '_blank')}
                 >
                   <div className="relative h-64 overflow-hidden">
                     <Image
-                      src={project.image}
-                      alt={project.title}
+                      src={project?.image}
+                      alt={project?.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -503,9 +488,9 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 text-gray-600 mb-2">
                       <MapPin className="h-4 w-4" />
-                      <span className="text-sm font-medium">{project.location}</span>
+                      <span className="text-sm font-medium">{project?.location}</span>
                     </div>
-                    <h3 className="font-bold text-xl mb-3">{project.title}</h3>
+                    <h3 className="font-bold text-xl mb-3">{project?.title}</h3>
                     <div className="flex items-center text-primary font-medium">
                       <span>View Project</span>
                       <ChevronRight className="ml-2 h-4 w-4" />
@@ -528,14 +513,14 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustFactors.map((factor, index) => {
-              const Icon = factor.icon;
+              const Icon = factor?.icon;
               return (
                 <Card key={index} className="border-0 shadow-lg rounded-2xl text-center p-6 hover:shadow-xl transition-shadow duration-300">
-                  <div className={`inline-flex p-3 rounded-full mb-4 ${factor.color}`}>
+                  <div className={`inline-flex p-3 rounded-full mb-4 ${factor?.color}`}>
                     <Icon className="h-8 w-8" />
                   </div>
-                  <h3 className="font-bold text-lg mb-2">{factor.title}</h3>
-                  <p className="text-gray-600">{factor.description}</p>
+                  <h3 className="font-bold text-lg mb-2">{factor?.title}</h3>
+                  <p className="text-gray-600">{factor?.description}</p>
                 </Card>
               );
             })}
@@ -544,7 +529,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
       </section>
 
       {/* Related Services */}
-      {relatedServices.length > 0 && (
+      {relatedServices?.length > 0 && (
         <section className="py-16 px-4 md:px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
@@ -553,25 +538,25 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
             </div>
             
             <div className="grid md:grid-cols-3 gap-6">
-              {relatedServices.map((service) => {
-                const RelatedIcon = getIcon(service.icon);
+              {relatedServices?.map((service) => {
+                const RelatedIcon = getIcon(service?.icon);
                 return (
                   <Link 
-                    key={service.slug} 
-                    href={`/services/${service.slug}`}
+                    key={service?.slug} 
+                    href={`/services/${service?.slug}`}
                     className="block"
                   >
                     <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden h-full">
                       <CardContent className="p-6">
                         <div className="flex items-center gap-4 mb-6">
-                          <div className={`p-3 rounded-xl bg-gradient-to-br ${service.heroColor} text-white`}>
+                          <div className={`p-3 rounded-xl bg-gradient-to-br ${service?.heroColor} text-white`}>
                             <RelatedIcon className="h-6 w-6" />
                           </div>
                           <Badge className="bg-gray-100 text-gray-800 hover:bg-gray-100">
-                            {service.badge}
+                            {service?.badge}
                           </Badge>
                         </div>
-                        <h3 className="font-bold text-xl mb-3">{service.title}</h3>
+                        <h3 className="font-bold text-xl mb-3">{service?.title}</h3>
                         <p className="text-gray-600 mb-4">
                           {service.description.substring(0, 100)}...
                         </p>

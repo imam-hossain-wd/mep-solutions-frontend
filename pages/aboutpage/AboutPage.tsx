@@ -37,7 +37,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { SiteConfig } from "@/config/siteConfig";
 
-export function AboutPage() {
+export default function AboutPage() {
   const [activeTab, setActiveTab] = useState("mission");
   const [animateStats, setAnimateStats] = useState(false);
 
@@ -732,7 +732,7 @@ export function AboutPage() {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 rounded-full px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                  onClick={() => window.open(SiteConfig.whatsappLink, "_blank")}
+                  onClick={() => window?.open(SiteConfig.whatsappLink, "_blank")}
                 >
                   <MessageSquare className="mr-2 h-5 w-5" />
                   Get Free Consultation
@@ -742,7 +742,7 @@ export function AboutPage() {
                   size="lg"
                   variant="outline"
                   className="border-2 border-primary text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-lg font-semibold hover:scale-105 transition-all duration-300"
-                  onClick={() => window.open(SiteConfig.callLink, "_blank")}
+                  onClick={() => window?.open(SiteConfig.callLink, "_blank")}
                 >
                   <Phone className="mr-2 h-5 w-5" />
                   Call {SiteConfig.displayNumber}

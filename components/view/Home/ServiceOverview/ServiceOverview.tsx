@@ -19,6 +19,7 @@ import { Container } from "@/components/ui/container";
 import { SiteConfig } from "@/config/siteConfig";
 import { ServiceCard } from "@/components/shared/Card/ServiceCard";
 import { allServices } from "@/constants/services";
+import Link from "next/link";
 
 
 const categories = [
@@ -68,7 +69,7 @@ export function ServicesOverview() {
                     ))}
                 </div>
 
-           
+
                 <div className="mt-12 grid md:grid-cols-2 gap-6">
                     {/* Custom Solution Card */}
                     <div className="bg-primary/5 rounded-xl p-6 text-center">
@@ -76,13 +77,15 @@ export function ServicesOverview() {
                         <p className="text-sm text-muted-foreground mb-4">
                             Get a free consultation for your specific requirements
                         </p>
-                        <Button
-                            size="sm"
-                            className="w-full"
-                            onClick={() => window.open(SiteConfig.whatsappLink, "_blank")}
-                        >
-                            Get Quote
-                        </Button>
+
+                        <Link href="SiteConfig.whatsappLink">
+                            <Button
+                                size="sm"
+                                className="w-full"
+                            >
+                                Get Quote
+                            </Button>
+                        </Link>
                     </div>
 
                     {/* View Services Card */}
@@ -91,14 +94,16 @@ export function ServicesOverview() {
                         <p className="text-sm text-muted-foreground mb-4">
                             Explore our complete range of building services
                         </p>
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            className="w-full"
-                            onClick={() => window.location.href = '/services'}
-                        >
-                            View All Services
-                        </Button>
+
+                        <Link href="/services">
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="w-full"
+                            >
+                                View All Services
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </Container>

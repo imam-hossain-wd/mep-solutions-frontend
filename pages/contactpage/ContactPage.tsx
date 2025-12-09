@@ -38,7 +38,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { SiteConfig } from "@/config/siteConfig";
 import { services } from "@/constants/servicedata";
 
-export function ContactPage() {
+export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
