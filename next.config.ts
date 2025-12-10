@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'hvaccareermap.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: '*.unsplash.com',
         pathname: '/**',
       },

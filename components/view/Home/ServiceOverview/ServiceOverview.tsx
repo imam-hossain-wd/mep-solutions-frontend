@@ -1,33 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import {
-    Home,
-    Building,
-    Factory,
-    ArrowRight,
-    ChevronRight,
-    Phone,
-    MessageSquare,
-    Wrench,
-    Eye,
-    CheckCircle
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
-import { SiteConfig } from "@/config/siteConfig";
 import { ServiceCard } from "@/components/shared/Card/ServiceCard";
-import { allServices } from "@/constants/services";
 import Link from "next/link";
+import { allServices } from "@/constants/servicedata";
 
 
-const categories = [
-    { id: "all", label: "All Services", icon: Home },
-    { id: "residential", label: "Residential", icon: Home },
-    { id: "commercial", label: "Commercial", icon: Building },
-    { id: "industrial", label: "Industrial", icon: Factory },
-];
 
 export function ServicesOverview() {
     const [activeCategory, setActiveCategory] = useState("all");
@@ -54,7 +35,8 @@ export function ServicesOverview() {
                 </div>
                 {/* Services Grid - Fixed to 4 columns */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    {filteredServices.map((service) => (
+
+                    {filteredServices.slice(0, 8).map((service) => (
                         <ServiceCard
                             key={service.title}
                             title={service.title}

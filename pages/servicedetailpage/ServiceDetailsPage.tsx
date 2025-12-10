@@ -2,7 +2,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { services } from "@/constants/servicedata";
 import { getIcon } from "@/utils/icon-mapping";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -11,45 +10,30 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import {
   ArrowLeft,
-  ArrowRight,
   Calendar,
   CheckCircle,
   CheckCircle2,
   Clock,
   DollarSign,
-  FileText,
   Home,
   Building2,
   Factory,
   MapPin,
   Phone,
-  MessageCircle,
   Shield,
   Star,
   TrendingUp,
   Users,
   Award,
-  Wrench,
   ChevronRight,
-  Circle,
-  Sparkles,
-  Zap,
-  Droplet,
-  PaintBucket,
-  Drill,
-  Hammer,
-  Building,
   PhoneCall,
-  Mail,
-  MessageSquare,
-  ThumbsUp,
   ShieldCheck,
-  Truck,
-  Globe,
+  Truck
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { allServices } from "@/constants/servicedata";
 
 interface ServiceDetailsPageProps {
   serviceData: any;
@@ -60,9 +44,9 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
   const [activeTab, setActiveTab] = useState("overview");
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
-  
+
   // Get related services
-  const relatedServices = services.filter((s) => 
+  const relatedServices = allServices.filter((s) =>
     serviceData?.related?.includes(s.slug)
   );
 
@@ -86,33 +70,33 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
 
   // Stats for quick info
   const stats = [
-    { 
-      label: "Response Time", 
-      value: serviceData?.responseTime, 
-      icon: Clock, 
-      color: "text-blue-600", 
-      bg: "bg-blue-50" 
+    {
+      label: "Response Time",
+      value: serviceData?.responseTime,
+      icon: Clock,
+      color: "text-blue-600",
+      bg: "bg-blue-50"
     },
-    { 
-      label: "Warranty", 
-      value: serviceData?.warranty, 
-      icon: Shield, 
-      color: "text-green-600", 
-      bg: "bg-green-50" 
+    {
+      label: "Warranty",
+      value: serviceData?.warranty,
+      icon: Shield,
+      color: "text-green-600",
+      bg: "bg-green-50"
     },
-    { 
-      label: "Price Range", 
-      value: serviceData?.priceRange, 
-      icon: DollarSign, 
-      color: "text-amber-600", 
-      bg: "bg-amber-50" 
+    {
+      label: "Price Range",
+      value: serviceData?.priceRange,
+      icon: DollarSign,
+      color: "text-amber-600",
+      bg: "bg-amber-50"
     },
-    { 
-      label: "Certification", 
-      value: serviceData?.certification, 
-      icon: Award, 
-      color: "text-purple-600", 
-      bg: "bg-purple-50" 
+    {
+      label: "Certification",
+      value: serviceData?.certification,
+      icon: Award,
+      color: "text-purple-600",
+      bg: "bg-purple-50"
     },
   ];
 
@@ -162,24 +146,6 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      {/* Floating Action Buttons */}
-      <div className={`fixed bottom-6 right-6 z-50 flex flex-col gap-3 transition-all duration-300 ${isScrolled ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-        <Button
-          onClick={handleEmergencyCall}
-          className="rounded-full shadow-xl bg-gradient-to-r from-red-600 to-red-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 h-14 w-14"
-          size="icon"
-        >
-          <Phone className="h-6 w-6" />
-        </Button>
-        <Button
-          onClick={handleWhatsApp}
-          className="rounded-full shadow-xl bg-green-600 hover:bg-green-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 h-14 w-14"
-          size="icon"
-        >
-          <MessageCircle className="h-6 w-6" />
-        </Button>
-      </div>
-
       {/* Hero Section */}
       <section className={`relative pt-20 pb-28 px-4 md:px-6 text-white bg-gradient-to-br ${serviceData?.heroColor} overflow-hidden`}>
         {/* Decorative elements */}
@@ -224,8 +190,8 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
-                    <div 
-                      key={index} 
+                    <div
+                      key={index}
                       className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-colors duration-300"
                     >
                       <div className="flex items-center gap-2 mb-2">
@@ -264,7 +230,8 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
             <div className="relative hidden lg:block">
               <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
                 <Image
-                  src={serviceData?.projects[selectedProjectIndex]?.image}
+                  // src={serviceData?.projects[selectedProjectIndex]?.image}
+                  src="https://hvaccareermap.org/assets/image-uploads/Commercial-Service-Tech_resized.jpg"
                   alt={serviceData?.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -276,7 +243,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                   <h3 className="text-xl font-bold">{serviceData?.projects[selectedProjectIndex]?.title}</h3>
                   <p className="text-white/80">{serviceData?.projects[selectedProjectIndex]?.location}</p>
                 </div>
-                
+
                 {/* Project thumbnails */}
                 <div className="absolute bottom-6 right-6 flex gap-2">
                   {serviceData?.projects?.map((project: any, index: number) => (
@@ -286,7 +253,8 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                       className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 ${selectedProjectIndex === index ? 'border-white' : 'border-transparent'}`}
                     >
                       <Image
-                        src={project?.image}
+                        // src={project?.image}
+                        src="https://hvaccareermap.org/assets/image-uploads/Commercial-Service-Tech_resized.jpg"
                         alt={project?.title}
                         fill
                         className="object-cover"
@@ -302,7 +270,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
         {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg className="w-full h-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
               className="fill-white"
             ></path>
           </svg>
@@ -341,7 +309,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                     <p className="text-gray-600">Breakdown of our service delivery</p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-6">
                   {serviceData?.serviceTypes?.map((type: any, index: number) => {
                     const Icon = serviceTypeIcons[type.type as keyof typeof serviceTypeIcons];
@@ -368,13 +336,13 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                 <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
                 <p className="text-gray-600 text-lg">Quality service with guaranteed satisfaction</p>
               </div>
-              
+
               <div className="grid md:grid-cols-2 gap-6">
                 {serviceData?.benefits?.map((benefit: any, index: number) => {
                   const BenefitIcon = getIcon(benefit?.icon);
                   return (
-                    <Card 
-                      key={index} 
+                    <Card
+                      key={index}
                       className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden group"
                     >
                       <CardContent className="p-6">
@@ -408,11 +376,11 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                     <p className="text-gray-600">Comprehensive solutions for all your needs</p>
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   {serviceData?.features?.map((feature: string, index: number) => (
-                    <div 
-                      key={index} 
+                    <div
+                      key={index}
                       className="flex items-start gap-3 p-4 bg-gray-50 hover:bg-white rounded-xl transition-all duration-300 group"
                     >
                       <CheckCircle2 className="h-6 w-6 text-green-500 mt-0.5 flex-shrink-0" />
@@ -439,17 +407,17 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                     <p className="text-gray-600">Streamlined workflow for maximum efficiency</p>
                   </div>
                 </div>
-                
+
                 <div className="relative">
                   <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 via-primary to-secondary/20 hidden md:block"></div>
-                  
+
                   <div className="space-y-12">
                     {serviceData?.process?.map((step: any, index: number) => (
                       <div key={index} className="relative flex items-start gap-8">
                         <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center shadow-lg">
                           <span className="text-white font-bold text-2xl">{step.step}</span>
                         </div>
-                        
+
                         <div className="flex-1 pt-2">
                           <h3 className="text-2xl font-bold mb-3">{step?.title}</h3>
                           <p className="text-gray-600 text-lg">{step?.desc}</p>
@@ -468,11 +436,11 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
               <h2 className="text-3xl font-bold mb-4">Recent Projects</h2>
               <p className="text-gray-600 text-lg">See our work in action</p>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               {serviceData?.projects?.map((project: any, index: number) => (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden group cursor-pointer"
                   onClick={() => window.open(project?.image, '_blank')}
                 >
@@ -510,7 +478,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
             <h2 className="text-3xl font-bold mb-4">Why Trust Us</h2>
             <p className="text-gray-600 text-lg">Our commitment to excellence</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustFactors.map((factor, index) => {
               const Icon = factor?.icon;
@@ -536,13 +504,13 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
               <h2 className="text-3xl font-bold mb-4">Related Services</h2>
               <p className="text-gray-600 text-lg">Explore other services you might need</p>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               {relatedServices?.map((service) => {
                 const RelatedIcon = getIcon(service?.icon);
                 return (
-                  <Link 
-                    key={service?.slug} 
+                  <Link
+                    key={service?.slug}
                     href={`/services/${service?.slug}`}
                     className="block"
                   >
@@ -581,7 +549,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-white rounded-full"></div>
           <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white rounded-full"></div>
         </div>
-        
+
         <div className="relative max-w-4xl mx-auto text-center">
           <div className="inline-flex p-3 bg-white/10 backdrop-blur-sm rounded-full mb-6">
             <PhoneCall className="h-8 w-8" />
@@ -593,18 +561,18 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
             Contact us today for a free consultation and quote. Our experts are ready to assist you with your project in Abu Dhabi.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button 
+            <Button
               onClick={handleBooking}
-              size="lg" 
+              size="lg"
               className="bg-white text-gray-900 hover:bg-gray-100 rounded-full px-8 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               <Calendar className="mr-2 h-5 w-5" />
               Book Free Inspection
             </Button>
-            <Button 
+            <Button
               onClick={handleEmergencyCall}
-              size="lg" 
-              variant="outline" 
+              size="lg"
+              variant="outline"
               className="border-2 border-white text-white hover:bg-white/20 rounded-full px-8 py-6 text-lg font-semibold backdrop-blur-sm"
             >
               <Phone className="mr-2 h-5 w-5" />

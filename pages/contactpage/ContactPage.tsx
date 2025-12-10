@@ -36,7 +36,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { SiteConfig } from "@/config/siteConfig";
-import { services } from "@/constants/servicedata";
+import { allServices } from "@/constants/servicedata";
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -162,6 +163,8 @@ export default function ContactPage() {
       [e.target.name]: e.target.value
     });
   };
+
+
 
   return (
     <section className="relative py-20 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white">
@@ -363,7 +366,7 @@ export default function ContactPage() {
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent>
-                          {services.map((service) => (
+                          {allServices.map((service) => (
                             <SelectItem key={service.slug} value={service.slug}>
                               {service.title}
                             </SelectItem>

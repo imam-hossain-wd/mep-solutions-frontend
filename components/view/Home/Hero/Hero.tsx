@@ -67,8 +67,7 @@ export function Hero() {
             </div>
 
             {/* CTA Buttons - Stack on mobile */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
-
+            {/* <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
               <Link href={SiteConfig?.whatsappLink}>
                 <Button
                   size="lg"
@@ -89,7 +88,7 @@ export function Hero() {
                   <span className="text-sm md:text-base">Call {SiteConfig?.displayNumber?.split(' ')[0]}</span>
                 </Button>
               </Link>
-            </div>
+            </div> */}
 
             {/* Quick Stats - Responsive */}
             <div className="grid grid-cols-3 gap-3 md:gap-4 pt-6 md:pt-8 border-t">
@@ -109,15 +108,15 @@ export function Hero() {
           {/* Right Column - Image Gallery */}
           <div className="relative order-1 lg:order-2 mb-8 lg:mb-0">
             {/* Main Image */}
-            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl -mt-20 md:mt-0">
               <div className="aspect-square md:aspect-[4/5] relative">
                 {/* Replace with your actual image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 ">
                   <Image
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoqrUf399gOr5twh1eQT3eAfRrNHHer3Pwjiwv1gz-Mw&s=10" // Replace with your image
                     alt="Building Services in Abu Dhabi"
                     fill
-                    className="object-cover"
+                    className="object-cover "
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                     priority
                   />
@@ -127,16 +126,18 @@ export function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
                 {/* Overlay Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                  <div className="bg-background/90 backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-lg">
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 w-[80%] md:w-[73%] mx-auto">
+                  <div className="bg-background/90  backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-lg">
                     <p className="text-sm md:text-base text-muted-foreground">Need Immediate Help?</p>
-                    <div className="flex items-center justify-between mt-2">
-                      <p className="text-lg md:text-xl font-bold text-primary">{SiteConfig?.displayNumber}</p>
-                      <Button size="sm" className="shadow-md">
-                        <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
-                        <span className="text-xs md:text-sm">Call Now</span>
-                      </Button>
-                    </div>
+                    <Link href={SiteConfig.callLink}>
+                      <div className="flex items-center justify-between mt-2">
+                        <p className="text-sm md:text-xl font-bold text-primary">{SiteConfig?.displayNumber}</p>
+                        <Button size="sm" className="shadow-md">
+                          <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
+                          <span className="text-xs md:text-sm">Call Now</span>
+                        </Button>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>

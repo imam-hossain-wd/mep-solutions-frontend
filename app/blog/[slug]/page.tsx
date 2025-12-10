@@ -1,5 +1,4 @@
-import { BlogDetailPage } from "@/pages/blogdetailpage/BlogDetailPage";
-
+import BlogDetailPage from "@/pages/blogdetailpage/BlogDetailPage";
 
 
 export default async function BlogDetail({

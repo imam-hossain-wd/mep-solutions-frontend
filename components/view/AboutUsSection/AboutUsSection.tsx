@@ -408,11 +408,6 @@ export function AboutUsSection() {
               maintenance and construction needs across the UAE.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-
-              {/* <Link href="SiteConfig.whatsappLink">
-              
-              </Link> */}
               <Link href="SiteConfig.whatsappLink">
                 <Button
                   size="lg"

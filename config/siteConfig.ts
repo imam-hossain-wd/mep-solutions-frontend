@@ -39,6 +39,7 @@ export const SiteConfig: SiteConfigType = {
   { name: "Painting & Finishing", href: "/services/painting", icon: Wrench },
   { name: "Partition & Interior", href: "/services/partition", icon: Wrench },
   { name: "Parking Shade & Outdoor", href: "/services/parking-shade", icon: Wrench },
+  { name: "All Services", href: "/services", icon: Wrench },
 ],
 
   footerhrefs: [

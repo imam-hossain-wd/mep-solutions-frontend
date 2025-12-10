@@ -22,7 +22,6 @@ import {
   Phone,
   MessageSquare,
   ChevronDown,
-  X,
   Home,
   Briefcase,
   User,
@@ -136,13 +135,13 @@ export function Navbar() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
                         align="center"
-                        className="w-64 p-2 grid grid-cols-2 gap-1"
+                        className="w-full p-2 grid grid-cols-2 gap-1"
                       >
                         {SiteConfig?.services.map((service) => (
                           <DropdownMenuItem key={service.name} asChild>
                             <Link
                               href={service.href}
-                              className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 cursor-pointer"
+                              className="flex items-center  gap-3 p-3 rounded-lg hover:bg-primary/5 cursor-pointer"
                             >
                               <div className="p-2 bg-primary/10 rounded-lg">
                                 <service.icon className="h-4 w-4 text-primary" />
@@ -202,50 +201,27 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full sm:w-96 p-0">
+    
                 <div className="flex flex-col h-full">
                   {/* Mobile Header */}
                   <div className="p-6 border-b">
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                           <Building className="h-6 w-6 text-white" />
                         </div>
                         <div>
-                          <p className="font-bold text-lg">{SiteConfig.brandName}</p>
+                          <p className="font-bold text-lg">Mep Solutions</p>
                           <p className="text-sm text-muted-foreground">{SiteConfig.city}</p>
                         </div>
                       </div>
-                      <Button
+                      {/* <Button
                         variant="ghost"
                         size="icon"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         <X className="h-5 w-5" />
-                      </Button>
-                    </div>
-
-                    {/* Contact Info */}
-                    <div className="space-y-3 mb-6">
-                      <a
-                        href={SiteConfig.callLink}
-                        className="flex items-center gap-3 p-3 bg-primary/5 rounded-lg"
-                      >
-                        <Phone className="h-5 w-5 text-primary" />
-                        <div>
-                          <p className="font-semibold">{SiteConfig.displayNumber}</p>
-                          <p className="text-sm text-muted-foreground">Call Now</p>
-                        </div>
-                      </a>
-                      <a
-                        href={SiteConfig.whatsappLink}
-                        className="flex items-center gap-3 p-3 bg-secondary/5 rounded-lg"
-                      >
-                        <MessageSquare className="h-5 w-5 text-secondary" />
-                        <div>
-                          <p className="font-semibold">WhatsApp</p>
-                          <p className="text-sm text-muted-foreground">Quick Response</p>
-                        </div>
-                      </a>
+                      </Button> */}
                     </div>
                   </div>
 
