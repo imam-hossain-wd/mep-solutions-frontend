@@ -17,12 +17,12 @@ export function Hero() {
       <div className="absolute top-10 left-5 w-48 h-48 md:w-72 md:h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-10 right-5 w-56 h-56 md:w-96 md:h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
-      <Container className="relative z-10 py-8">
+      <Container className="relative z-10 py-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left Column - Content */}
-          <div className="space-y-6 md:space-y-8 animate-fade-in-up order-2 lg:order-1">
+          <div className="space-y-3 animate-fade-in-up order-2 lg:order-1">
             {/* Location Badge */}
-            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-primary/10 border border-primary/20">
+            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-primary/10 border border-primary/20 ">
               <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
               <span className="text-xs md:text-sm font-medium text-primary">
                 Trusted in {SiteConfig?.city}, {SiteConfig?.country}
@@ -31,23 +31,23 @@ export function Hero() {
 
             {/* Main Heading - Reduced Size */}
             <div className="space-y-3 md:space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">
                 <span className="block text-foreground">
-                  Expert Building
+                 Building Maintenance & Repair Services
                 </span>
                 <span className="block text-primary mt-1 md:mt-2">
-                  Services in UAE
+                  in Abu Dhabi
                 </span>
               </h1>
 
               {/* Subtitle */}
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl">
-                Complete building maintenance, repairs, and construction solutions for residential, commercial, and industrial properties across Abu Dhabi.
+               Professional building maintenance services in Abu Dhabi. Certified experts in electrical, plumbing, carpentry, welding, painting, masonry, partitions, and outdoor fabrication.
               </p>
             </div>
 
             {/* Key Features - Mobile Optimized */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 py-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3  py-2">
               {[
                 { icon: Shield, text: "DM Approved & Licensed", sub: "Fully Certified" },
                 { icon: Clock, text: "24/7 Emergency Service", sub: "Quick Response" },

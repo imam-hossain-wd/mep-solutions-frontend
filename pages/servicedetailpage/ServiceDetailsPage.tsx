@@ -53,6 +53,8 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
   // Get icon component
   const ServiceIcon = getIcon(serviceData?.icon);
 
+  // console.log(relatedServices, '4444relatedServices')
+  // console.log(serviceData, '4444serviceData')
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
@@ -147,41 +149,45 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
-      <section className={`relative pt-20 pb-28 px-4 md:px-6 text-white bg-gradient-to-br ${serviceData?.heroColor} overflow-hidden`}>
+      <section className={`relative pt-20 pb-28 px-4 md:px-6 text-white bg-gradient-to-br bg-primary overflow-hidden`}>
+      {/* <section className={`relative pt-20 pb-28 px-4 md:px-6 text-white bg-gradient-to-br ${serviceData?.heroColor} overflow-hidden`}> */}
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -top-32 -left-32 w-96 h-96 bg-white rounded-full"></div>
           <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-white rounded-full"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-7xl mx-auto -mt-16">
           {/* Back Button */}
-          <Button
+          {/* <Button
             onClick={() => router.back()}
             variant="ghost"
             className="mb-8 text-white hover:bg-white/20 backdrop-blur-sm rounded-full px-4"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Services
-          </Button>
+          </Button> */}
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-8 animate-fade-in-up">
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl shadow-lg">
-                  <ServiceIcon className="h-12 w-12" />
+            <div className="space-y-3 animate-fade-in-up">
+              {/* <div className="flex items-center gap-4">
+                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-2xl shadow-lg">
+                  <ServiceIcon className="h-6 w-6" />
                 </div>
                 <Badge className="bg-white/20 backdrop-blur-sm text-white border-0 text-base px-4 py-2 rounded-full animate-pulse">
                   {serviceData?.badge}
                 </Badge>
-              </div>
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                {serviceData?.title}
+              </h1>
+              </div> */}
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 {serviceData?.title}
               </h1>
 
-              <p className="text-xl text-white/90 max-w-2xl leading-relaxed">
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">
                 {serviceData?.description}
               </p>
 
@@ -205,33 +211,33 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 pt-4">
+              {/* <div className="flex gap-3 pt-4">
                 <Button
                   onClick={handleBooking}
                   size="lg"
-                  className="bg-white text-gray-900 hover:bg-gray-100 rounded-full px-8 py-6 text-base font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                  className="bg-white text-gray-900 hover:bg-gray-100 rounded-full px-6 py-6 text-base font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
                   <Calendar className="mr-2 h-5 w-5" />
-                  Book Free Inspection
+                  Book Now
                 </Button>
                 <Button
                   onClick={handleEmergencyCall}
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white/20 rounded-full px-8 py-6 text-base font-semibold backdrop-blur-sm"
+                  className="border-2 border-white text-white hover:bg-white/20 rounded-full px-6 py-6 text-base font-semibold backdrop-blur-sm"
                 >
                   <Phone className="mr-2 h-5 w-5" />
                   Emergency Call
                 </Button>
-              </div>
+              </div> */}
             </div>
 
             {/* Hero Image */}
-            <div className="relative hidden lg:block">
-              <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
+            <div className="relative  lg:block">
+              <div className="relative h-[300px] md:h-[400px] rounded-3xl overflow-hidden shadow-2xl group">
                 <Image
-                  // src={serviceData?.projects[selectedProjectIndex]?.image}
-                  src="https://hvaccareermap.org/assets/image-uploads/Commercial-Service-Tech_resized.jpg"
+                  src={serviceData?.image}
+                  // src="https://hvaccareermap.org/assets/image-uploads/Commercial-Service-Tech_resized.jpg"
                   alt={serviceData?.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -242,25 +248,6 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                   <p className="text-sm font-medium">Featured Project</p>
                   <h3 className="text-xl font-bold">{serviceData?.projects[selectedProjectIndex]?.title}</h3>
                   <p className="text-white/80">{serviceData?.projects[selectedProjectIndex]?.location}</p>
-                </div>
-
-                {/* Project thumbnails */}
-                <div className="absolute bottom-6 right-6 flex gap-2">
-                  {serviceData?.projects?.map((project: any, index: number) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedProjectIndex(index)}
-                      className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 ${selectedProjectIndex === index ? 'border-white' : 'border-transparent'}`}
-                    >
-                      <Image
-                        // src={project?.image}
-                        src="https://hvaccareermap.org/assets/image-uploads/Commercial-Service-Tech_resized.jpg"
-                        alt={project?.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </button>
-                  ))}
                 </div>
               </div>
             </div>
@@ -277,17 +264,20 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
         </div>
       </section>
 
+
+
+
       {/* Main Content Area */}
-      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto -mt-4">
+      <section className="py-8 px-4 md:px-6 max-w-7xl mx-auto -mt-4">
         {/* Navigation Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="sticky top-4 z-30 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg mb-8">
-            <TabsList className="grid w-full grid-cols-4 bg-transparent p-1">
+          <div className="sticky top-4 p-4 border shadow z-30 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg mb-8">
+            <TabsList className="grid w-full grid-cols-4 bg-transparent p-1 gap-2">
               {["overview", "features", "process", "projects"].map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="rounded-xl data-[state=active]:bg-white data-[state=active]:shadow-lg transition-all duration-300 capitalize"
+                  className="rounded-xl p-2 -mt-1 data-[state=active]:bg-white data-[state=active]:shadow-lg transition-all duration-300 capitalize"
                 >
                   {tab}
                 </TabsTrigger>
@@ -296,9 +286,9 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
           </div>
 
           {/* Overview Tab */}
-          <TabsContent value="overview" className="space-y-12 animate-fade-in">
+          <TabsContent value="overview" className="space-y-12 animate-fade-in ">
             {/* Service Distribution */}
-            <Card className="border-0 shadow-xl rounded-3xl overflow-hidden">
+            <Card className="border shadow-xl rounded-3xl overflow-hidden">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg">
@@ -310,7 +300,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                   </div>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-6 border">
                   {serviceData?.serviceTypes?.map((type: any, index: number) => {
                     const Icon = serviceTypeIcons[type.type as keyof typeof serviceTypeIcons];
                     return (
@@ -438,7 +428,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {serviceData?.projects?.map((project: any, index: number) => (
+              {/* {serviceData?.projects?.map((project: any, index: number) => (
                 <Card
                   key={index}
                   className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden group cursor-pointer"
@@ -465,7 +455,7 @@ export default function ServiceDetailsPage({ serviceData }: ServiceDetailsPagePr
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+              ))} */}
             </div>
           </TabsContent>
         </Tabs>

@@ -108,7 +108,7 @@ export function Navbar() {
                   {SiteConfig.brandName}
                 </span>
                 <p className="text-xs text-muted-foreground">
-                  Building Services • {SiteConfig.city}
+                  Repair & Maintanance Services
                 </p>
               </div>
             </Link>

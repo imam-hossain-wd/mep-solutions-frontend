@@ -5,9 +5,9 @@ import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube, Globe,Build
 
 export const SiteConfig: SiteConfigType = {
   authorName: "Md Walid",
-  brandName: "Walid Portfolio / Service Platform",
-  url: "https://yourwebsite.com", 
-  email: "yourmail@example.com",
+  brandName: "Build Maint",
+  url: "www.buildmaintuae.com", 
+  email: "buildmaint@gmail.com",
   googleMapsLink: "",
 
   description:

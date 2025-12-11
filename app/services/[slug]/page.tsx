@@ -15,6 +15,8 @@ export default async function ServiceDetail({
   const { slug } = await params;
   const serviceData = allServices.find((s) => s.slug === slug);
 
+  console.log(serviceData, 'serviceData-----------')
+
   if (!serviceData) {
     notFound();
   }

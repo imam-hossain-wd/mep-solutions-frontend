@@ -32,7 +32,6 @@ export function Footer() {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      // Add your newsletter subscription logic here
       console.log("Subscribed:", email);
       setSubscribed(true);
       setEmail("");
@@ -40,17 +39,17 @@ export function Footer() {
     }
   };
 
-  const services = [
-    { name: "Building Maintenance", href: "/services/maintenance" },
-    { name: "Electrical Services", href: "/services/electrical" },
-    { name: "Plumbing & Pipe Fitting", href: "/services/plumbing" },
-    { name: "Welding & Fabrication", href: "/services/welding" },
-    { name: "Carpentry & Fit-Out", href: "/services/carpentry" },
-    { name: "Masonry & Civil Works", href: "/services/masonry" },
-    { name: "Painting & Finishing", href: "/services/painting" },
-    { name: "Partition & Interior", href: "/services/partition" },
-    { name: "Parking Shade & Outdoor", href: "/services/parking-shade" },
-  ];
+  // const services = [
+  //   { name: "Building Maintenance", href: "/services/maintenance" },
+  //   { name: "Electrical Services", href: "/services/electrical" },
+  //   { name: "Plumbing & Pipe Fitting", href: "/services/plumbing" },
+  //   { name: "Welding & Fabrication", href: "/services/welding" },
+  //   { name: "Carpentry & Fit-Out", href: "/services/carpentry" },
+  //   { name: "Masonry & Civil Works", href: "/services/masonry" },
+  //   { name: "Painting & Finishing", href: "/services/painting" },
+  //   { name: "Partition & Interior", href: "/services/partition" },
+  //   { name: "Parking Shade & Outdoor", href: "/services/parking-shade" },
+  // ];
 
   const quickLinks = [
     { name: "Home", href: "/" },
@@ -97,7 +96,7 @@ export function Footer() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold">{SiteConfig.brandName}</h3>
-                <p className="text-gray-400 text-sm">Building Services • {SiteConfig.city}</p>
+                <p className="text-gray-400 text-sm">Repair & Maintanance Services</p>
               </div>
             </div>
             
@@ -141,7 +140,7 @@ export function Footer() {
               Our Services
             </h4>
             <ul className="space-y-3">
-              {services.map((service) => (
+              {SiteConfig?.services.map((service) => (
                 <li key={service.name}>
                   <Link
                     href={service.href}

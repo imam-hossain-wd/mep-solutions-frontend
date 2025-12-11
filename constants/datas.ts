@@ -576,6 +576,102 @@ export const allServices = [
       { "type": "Industrial", "percentage": 10 }
     ]
   },
+
+  {
+    "slug": "aluminium-glass-partition",
+    "title": "Aluminium Glass Partition",
+    "description": "Modern aluminium and glass partition systems for offices, commercial spaces, and residential interiors in Abu Dhabi. Create transparent, elegant, and functional spaces with premium materials.",
+    "icon": "Glass",
+    "heroColor": "from-sky-500 to-indigo-500",
+    "badge": "Modern",
+    "priceRange": "AED 2,500 - 25,000+",
+    "responseTime": "3-7 Days",
+    "warranty": "24 Months",
+    "certification": "DM Approved",
+    "projects": 65,
+    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800",
+    "category": "partition",
+    "href": "/services/aluminium-glass-partition",
+    "features": [
+      "Full Height Glass Partitions",
+      "Aluminium Framed Glass Walls",
+      "Frameless Glass Partition Systems",
+      "Sliding Glass Doors & Partitions",
+      "Double Glazed Glass Partitions",
+      "Tempered Safety Glass Installation",
+      "Office Glass Cubicles",
+      "Glass Partition with Blinds",
+      "Acoustic Glass Partitioning",
+      "Custom Glass Partition Designs"
+    ],
+    "benefits": [
+      {
+        "icon": "Shield",
+        "text": "DM Approved Materials",
+        "desc": "Quality aluminium profiles and tempered glass meeting UAE standards"
+      },
+      {
+        "icon": "Clock",
+        "text": "Quick Installation",
+        "desc": "Professional installation with minimal disruption"
+      },
+      {
+        "icon": "Award",
+        "text": "Premium Finish",
+        "desc": "Sleek aluminium frames with polished glass surfaces"
+      },
+      {
+        "icon": "Users",
+        "text": "Expert Installers",
+        "desc": "Specialized team with glass partitioning experience"
+      }
+    ],
+    "process": [
+      {
+        "step": "1",
+        "title": "Design Consultation",
+        "desc": "Space planning and glass partition design"
+      },
+      {
+        "step": "2",
+        "title": "Material Selection",
+        "desc": "Choosing glass type, thickness, and aluminium profiles"
+      },
+      {
+        "step": "3",
+        "title": "Precision Installation",
+        "desc": "Professional installation with proper sealing"
+      },
+      {
+        "step": "4",
+        "title": "Safety Inspection",
+        "desc": "Quality check and safety certification"
+      }
+    ],
+    "projectsGallery": [
+      {
+        "title": "Office Glass Partitions",
+        "location": "Al Maryah Island",
+        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600"
+      },
+      {
+        "title": "Commercial Glass Walls",
+        "location": "Al Reem Island",
+        "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600"
+      },
+      {
+        "title": "Residential Glass Rooms",
+        "location": "Khalifa City",
+        "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=600"
+      }
+    ],
+    "related": ["partition", "carpentry", "maintenance"],
+    "serviceTypes": [
+      { "type": "Commercial", "percentage": 75 },
+      { "type": "Residential", "percentage": 20 },
+      { "type": "Industrial", "percentage": 5 }
+    ]
+  },
   {
     "slug": "painting",
     "title": "Painting & Finishing",
