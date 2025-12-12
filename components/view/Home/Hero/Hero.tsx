@@ -91,7 +91,7 @@ export function Hero() {
             </div> */}
 
             {/* Quick Stats - Responsive */}
-            <div className="grid grid-cols-3 gap-3 md:gap-4 pt-6 md:pt-8 border-t">
+            {/* <div className="grid grid-cols-3 gap-3 md:gap-4 pt-6 md:pt-8 border-t">
               {[
                 { number: "500+", label: "Projects" },
                 { number: "50+", label: "Technicians" },
@@ -102,14 +102,14 @@ export function Hero() {
                   <p className="text-xs md:text-sm text-muted-foreground mt-1">{stat?.label}</p>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column - Image Gallery */}
           <div className="relative order-1 lg:order-2 mb-8 lg:mb-0">
             {/* Main Image */}
             <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl -mt-20 md:mt-0">
-              <div className="aspect-square md:aspect-[4/5] relative">
+              <div className="aspect-square md:aspect-4/3 relative">
                 {/* Replace with your actual image */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 ">
                   <Image

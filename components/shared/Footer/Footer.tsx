@@ -172,20 +172,6 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            
-            {/* Emergency Contact */}
-            <div className="mt-8 p-4 bg-gray-800/50 rounded-lg border-l-4 border-secondary">
-              <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-4 w-4 text-secondary" />
-                <span className="text-sm font-semibold">24/7 Emergency</span>
-              </div>
-              <a 
-                href={SiteConfig.callLink}
-                className="text-lg font-bold hover:text-secondary transition-colors"
-              >
-                {SiteConfig.displayNumber}
-              </a>
-            </div>
           </div>
 
           {/* Contact & Newsletter */}
@@ -296,9 +282,6 @@ export function Footer() {
               <p className="text-gray-400 text-sm">
                 © {new Date().getFullYear()} {SiteConfig.brandName}. All rights reserved.
               </p>
-              <p className="text-gray-500 text-xs mt-1">
-                Reg. No: 123456789 - {SiteConfig.city}, {SiteConfig.country}
-              </p>
             </div>
             
             <div className="flex items-center gap-6">
@@ -311,18 +294,6 @@ export function Footer() {
               <Link href="/sitemap" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Sitemap
               </Link>
-              <a 
-                href={SiteConfig.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all",
-                  "bg-green-600 hover:bg-green-700 text-white",
-                  "flex items-center gap-2"
-                )}
-              >
-                WhatsApp Chat
-              </a>
             </div>
           </div>
         </div>

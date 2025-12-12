@@ -1,232 +1,215 @@
-// app/components/sections/why-choose-us.tsx
+"use client";
 import { 
   ShieldCheck, 
   Clock, 
   Award, 
-  Users, 
-  MapPin, 
-  Building, 
   FileCheck,
-  Wallet
+  ChevronRight
 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SiteConfig } from "@/config/siteConfig";
+import { cn } from "@/lib/utils";
 
 export function WhyChooseUs() {
-  const reasons = [
+  const pillars = [
     {
       icon: ShieldCheck,
-      title: "DM Certified & Licensed",
-      description: "Fully licensed by Dubai Municipality and Abu Dhabi Civil Defense. All our technicians hold UAE-approved certifications and undergo regular safety training.",
-      stats: "100% Compliance",
-      highlight: true
+      title: "Certified Excellence",
+      description: "DM & Abu Dhabi Civil Defense certified with 100% compliance",
+      accent: "before:bg-blue-500"
     },
     {
       icon: Clock,
-      title: "24/7 Emergency Response",
-      description: "Round-the-clock emergency service with <2 hour response time in Abu Dhabi. Our dedicated emergency team is always on standby for urgent repairs.",
-      stats: "Under 2 Hours",
-      highlight: true
+      title: "Rapid Response",
+      description: "24/7 emergency service with <2 hour response guarantee",
+      accent: "before:bg-amber-500"
     },
     {
       icon: Award,
-      title: "UAE-Specific Expertise",
-      description: "15+ years experience with Abu Dhabi's building regulations, climate challenges, and architectural requirements. We understand local materials and standards.",
-      stats: "15+ Years UAE",
-      highlight: false
-    },
-    {
-      icon: Users,
-      title: "Skilled UAE Workforce",
-      description: "Team of 50+ certified technicians including electricians, plumbers, welders, and carpenters. All background-checked and continuously trained.",
-      stats: "50+ Technicians",
-      highlight: false
-    },
-    {
-      icon: MapPin,
-      title: "Local Abu Dhabi Presence",
-      description: "Based in Khalifa City with warehouses across Abu Dhabi. Quick mobilization to any location - no delays from distant suppliers.",
-      stats: "Multiple Locations",
-      highlight: false
-    },
-    {
-      icon: Building,
-      title: "End-to-End Solutions",
-      description: "From preventive maintenance to complete renovations. Single point of contact for all building services - no need to coordinate multiple contractors.",
-      stats: "9 Services",
-      highlight: false
+      title: "Local Expertise",
+      description: "15+ years mastering Abu Dhabi's unique requirements",
+      accent: "before:bg-purple-500"
     },
     {
       icon: FileCheck,
-      title: "Quality Guarantee",
-      description: "12-month warranty on all workmanship and materials. Comprehensive inspection checklist and digital reporting for every project.",
-      stats: "12-Month Warranty",
-      highlight: false
-    },
-    {
-      icon: Wallet,
-      title: "Transparent Pricing",
-      description: "Fixed-price quotes with no hidden costs. VAT-compliant invoicing in AED. Multiple payment options including installment plans for large projects.",
-      stats: "Fixed Pricing",
-      highlight: false
+      title: "Quality Assured",
+      description: "12-month comprehensive warranty on all work",
+      accent: "before:bg-emerald-500"
     }
   ];
 
   return (
-    <section className="py-10 bg-gradient-to-b from-white to-gray-50/50">
-      <Container>
-        {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-            <span className="text-sm font-semibold text-primary">WHY WE STAND OUT</span>
+    <section className="relative py-8 overflow-hidden bg-gradient-to-b from-white to-gray-50">
+      {/* Architectural Background Elements */}
+      <div className="absolute inset-0">
+        {/* Grid Foundation */}
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#f8fafc_1px,transparent_1px),linear-gradient(#f8fafc_1px,transparent_1px)] bg-[size:80px_80px]" />
+        
+        {/* Structural Lines */}
+        <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+        <div className="absolute left-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent" />
+        <div className="absolute left-3/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent" />
+        
+        {/* Corner Accents */}
+        <div className="absolute top-10 left-10 w-2 h-2 bg-primary rotate-45" />
+        <div className="absolute top-10 right-10 w-2 h-2 bg-secondary rotate-45" />
+        <div className="absolute bottom-10 left-10 w-2 h-2 bg-primary rotate-45" />
+        <div className="absolute bottom-10 right-10 w-2 h-2 bg-secondary rotate-45" />
+      </div>
+
+      <Container className="relative">
+        {/* Header with Architectural Typography */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 mb-8">
+            <div className="w-3 h-3 bg-primary" />
+            <span className="text-sm font-bold text-gray-500 uppercase tracking-widest">
+              The Foundation
+            </span>
+            <div className="w-3 h-3 bg-secondary" />
           </div>
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Why <span className="text-primary">Abu Dhabi</span> Trusts 
-            <span className="text-secondary"> Our Building Services</span>
-          </h2>
-          
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            As the leading building services provider in Abu Dhabi, we combine 
-            local expertise with international standards to deliver exceptional 
-            results for every project, big or small.
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+            <span className="block text-gray-900">
+              Built on Four
+            </span>
+            <span className="block">
+              <span className="relative">
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Pillars of Excellence
+                </span>
+                <span className="absolute -bottom-2 left-0 right-0 h-px bg-gradient-to-r from-primary/50 via-primary to-primary/50" />
+              </span>
+            </span>
+          </h1>
+
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Our commitment to quality, speed, expertise, and trust defines every project
           </p>
         </div>
 
-        {/* Stats Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {[
-            { number: "500+", label: "Projects Completed" },
-            { number: "98%", label: "Client Satisfaction" },
-            { number: "50+", label: "Expert Technicians" },
-            { number: "15", label: "Years Experience" },
-          ].map((stat) => (
-            <div 
-              key={stat.label}
-              className="bg-white p-6 rounded-2xl shadow-sm border text-center hover:shadow-md transition-shadow"
-            >
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                {stat.number}
-              </div>
-              <div className="text-sm font-medium text-gray-600">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Reasons Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {reasons.map((reason, index) => (
-            <div
-              key={reason.title}
-              className={`
-                group relative p-6 rounded-2xl transition-all duration-300
-                ${reason.highlight 
-                  ? 'bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20 shadow-lg' 
-                  : 'bg-white border hover:shadow-md'
-                }
-                hover:-translate-y-2
-              `}
-            >
-              {/* Highlight Badge */}
-              {reason.highlight && (
-                <div className="absolute -top-3 left-6">
-                  <span className="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">
-                    MOST VALUED
-                  </span>
-                </div>
-              )}
-
-              {/* Icon */}
-              <div className={`
-                w-14 h-14 rounded-xl flex items-center justify-center mb-6
-                ${reason.highlight 
-                  ? 'bg-primary text-white' 
-                  : 'bg-gray-100 text-primary'
-                }
-                group-hover:scale-110 transition-transform
-              `}>
-                <reason.icon className="w-7 h-7" />
-              </div>
-
-              {/* Content */}
-              <h3 className="text-xl font-bold mb-3 text-gray-900">
-                {reason.title}
-              </h3>
-              
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                {reason.description}
-              </p>
-              
-              <div className="text-sm font-semibold text-primary">
-                {reason.stats}
-              </div>
-
-              {/* Bottom Accent */}
-              <div className={`
-                absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl
-                ${reason.highlight ? 'bg-secondary' : 'bg-gray-200 group-hover:bg-primary'}
-                transition-colors
-              `} />
-            </div>
-          ))}
-        </div>
-
-        {/* Certification Strip */}
-        <div className="mt-20 pt-10 border-t">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-3">Our Certifications & Affiliations</h3>
-            <p className="text-gray-600">Fully compliant with UAE regulations and standards</p>
-          </div>
+        {/* Architectural Pillars Design */}
+        <div className="relative max-w-6xl mx-auto">
+          {/* Connecting Structural Beam */}
+          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 transform -translate-y-1/2 z-0" />
           
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70">
-            {[
-              { name: "Dubai Municipality", icon: "DM" },
-              { name: "Abu Dhabi Civil Defense", icon: "ADCD" },
-              { name: "UAE Safety Standards", icon: "USS" },
-              { name: "ISO 9001:2015", icon: "ISO" },
-              { name: "Green Building Certified", icon: "GBC" },
-            ].map((cert) => (
-              <div key={cert.name} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-2">
-                  <span className="font-bold text-gray-700">{cert.icon}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 relative z-10">
+            {pillars.map((pillar, index) => (
+              <div
+                key={pillar.title}
+                className="relative group"
+              >
+                {/* Vertical Pillar Line */}
+                <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent transform -translate-x-1/2" />
+                
+                {/* Pillar Container */}
+                <div className="relative bg-white p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  {/* Top Architectural Cap */}
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="w-8 h-4 bg-gradient-to-r from-primary to-secondary clip-pentagon" />
+                  </div>
+                  
+                  {/* Icon with Architectural Base */}
+                  <div className="relative mb-8">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white rounded-lg transform rotate-6" />
+                    <div className={cn(
+                      "relative w-20 h-20 rounded-lg",
+                      "bg-gradient-to-br from-white to-gray-50",
+                      "border border-gray-100",
+                      "flex items-center justify-center",
+                      "mx-auto"
+                    )}>
+                      <pillar.icon className="h-10 w-10 text-gray-700" />
+                    </div>
+                    
+                    {/* Pillar Base */}
+                    <div className={cn(
+                      "absolute -bottom-2 left-1/2 transform -translate-x-1/2",
+                      "w-12 h-2",
+                      pillar.accent
+                    )} />
+                  </div>
+
+                  {/* Content */}
+                  <div className="text-center space-y-4">
+                    <h3 className="text-xl font-bold text-gray-900">
+                      {pillar.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {pillar.description}
+                    </p>
+                    
+                    {/* Measurement Indicator */}
+                    <div className="pt-4 flex items-center justify-center">
+                      <div className="w-full max-w-32 h-px bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300" />
+                      <div className="mx-4 text-xs text-gray-500 font-mono">
+                        {index + 1}/4
+                      </div>
+                      <div className="w-full max-w-32 h-px bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300" />
+                    </div>
+                  </div>
                 </div>
-                <div className="text-sm text-gray-600">{cert.name}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA Bottom */}
-        <div className="mt-20 text-center">
-          <div className="inline-block bg-gradient-to-r from-primary to-secondary p-1 rounded-2xl">
-            <div className="bg-white rounded-xl px-8 py-6">
-              <h3 className="text-2xl font-bold mb-3">
-                Ready to Experience Professional Building Services?
-              </h3>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Join 500+ satisfied clients across Abu Dhabi who trust us with their 
-                building maintenance and construction needs.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href={SiteConfig.callLink}
-                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
-                >
-                  Call {SiteConfig.displayNumber}
-                </a>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-colors"
-                >
-                  Schedule Free Site Visit
-                </a>
-              </div>
+        {/* Bottom Foundation Stats */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <div className="relative bg-gradient-to-r from-gray-50 to-white p-8 border border-gray-100">
+            {/* Foundation Beam */}
+            <div className="absolute -top-1 left-0 right-0 h-2 bg-gradient-to-r from-primary via-primary/50 to-secondary" />
+            
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { value: "500+", label: "Projects", detail: "Completed" },
+                { value: "98%", label: "Client", detail: "Satisfaction" },
+                { value: "50+", label: "Expert", detail: "Technicians" },
+                { value: "15+", label: "Years", detail: "Experience" },
+              ].map((stat, index) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                      {stat.label}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {stat.detail}
+                    </div>
+                  </div>
+                  
+                  {/* Connecting Dot */}
+                  {index < 3 && (
+                    <div className="hidden lg:block absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2">
+                      <div className="w-2 h-2 bg-gray-300 rounded-full" />
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
+
+        {/* Minimal CTA */}
+        <div className="mt-8 text-center max-w-2xl mx-auto">
+          <a
+            href={SiteConfig.callLink}
+            className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+          >
+            <span>Begin Your Project</span>
+            <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
       </Container>
+
+      {/* Custom Shape CSS */}
+      <style jsx global>{`
+        .clip-pentagon {
+          clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+      `}</style>
     </section>
   );
 }
